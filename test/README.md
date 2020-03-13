@@ -16,7 +16,7 @@ We tested the libraries in the DeepHealth's Kubernetes cluster and verify the co
 
 First, create a file with Local Storage: 
 
-**dh-sc.yaml**
+**00-dh-sc.yaml**
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -28,7 +28,7 @@ volumeBindingMode: WaitForFirstConsumer
 
 Then I build the PV and PVC:
 
-**dh-pv.yaml**
+**01-dh-pv.yaml**
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -92,7 +92,7 @@ spec:
 We run *kubectl-apply* to generate the volumes and the POD:
 
 ```bash
-$ kubectl apply -f dh-sc.yaml && kubectl apply -f dh-pv.yaml && kubectl apply -f dh-pod.yaml
+$ kubectl apply -f .
 
 $ kubectl get sc && echo && kubectl get pv && echo && kubectl get pvc && echo && kubectl get pods
 ```
