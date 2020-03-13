@@ -1,21 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: deephealth-pod
+  name: dh-pod-training
+  namespace: dh
 spec:
     volumes:
       - name: dh-volume
         persistentVolumeClaim:
-          claimName: deephealth-pv-claim
+          claimName: dh-pv-claim
     containers:
     - name: dhealth-pylibs
       image: dhealth/pylibs:latest
       volumeMounts:
         - name: dh-volume
           mountPath: /deephealth
-      command: ["/bin/bash", "-c",
-      "cd /deephealth/examples/use_case_pipeline && python3 skin_lesion_segmentation.py '../../datasets/isic_segmentation/isic_segmentation.yml' --out-dir '../../outputs' --epochs 1 --batch-size 2 && sleep 5"
-      ]
+      command: ["/bin/bash", "-c", "cd /deephealth/examples/use_case_pipeline && python3 skin_lesion_segmentation_training.py '../../dataset/isic_segmentation/isic_segmentation_small.yml' --out-dir '../../outputs' --epochs 1 --batch-size 2 && sleep 5"]
       resources:
         limits:
           memory: "2048Mi"
