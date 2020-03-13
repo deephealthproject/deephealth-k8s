@@ -63,6 +63,7 @@ spec:
 
 y por último, el POD:
 
+**02-dh-pod.yaml**
 ```yaml
 apiVersion: v1
 kind: Pod
