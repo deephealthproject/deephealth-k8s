@@ -37,7 +37,7 @@ metadata:
   labels:
     id: dh-vol
 spec:
-  storageClassName: standard
+  storageClassName: local-storage
   capacity:
     storage: 20Gi
   accessModes:
@@ -50,7 +50,7 @@ apiVersion: v1
 metadata:
   name: deephealth-pv-claim
 spec:
-  storageClassName: standard
+  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:
