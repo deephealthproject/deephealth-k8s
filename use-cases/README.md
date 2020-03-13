@@ -81,7 +81,7 @@ spec:
       volumeMounts:
         - name: dh-volume
           mountPath: /deephealth
-      command: ["/bin/bash", "-c", "cd /deephealth/examples/use_case_pipeline && python3 skin_lesion_segmentation_training.py '../../dataset/isic_segmentation/isic_segmentation_small.yml' --out-dir '../../outputs' --epochs 1 --batch-size 2 && sleep 5"]
+      command: ["/bin/bash", "-c", "cd /deephealth/examples/use_case_pipeline && python3 skin_lesion_segmentation_training.py '../../dataset/isic_segmentation/isic_segmentation.yml' --out-dir '../../outputs' --epochs 1 --batch-size 2 && sleep 5"]
       resources:
         limits:
           memory: "2048Mi"
