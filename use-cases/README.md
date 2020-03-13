@@ -148,7 +148,7 @@ dh-pod-training   0/1     Completed   0          2m37s
 When the POD of the training is completed, we deploy the inference:
 
 ```bash
-$ kubectl apply -f 02-dh-pod-inference.yaml
+$ kubectl apply -f 03-dh-pod-inference.yaml
 
 $ kubectl get pod dh-pod-inference
 ```
