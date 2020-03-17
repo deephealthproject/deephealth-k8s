@@ -122,9 +122,6 @@ $ kubectl get pod dh-pod-training
 At this point, we need to have the following resources deployed:
 
 ```bash
-NAME                 PROVISIONER                AGE
-standard (default)   k8s.io/dh-hostpath   60m
- 
 NAME                   CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                    STORAGECLASS   REASON   AGE
 dh-pv-volume           20Gi       RWO            Retain           Bound    default/dh-pv-claim      nfs-storage             2m42s
  
