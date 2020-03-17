@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: dh-pv
+  labels:
+    id: dh-nfs-pv
+spec:
+  storageClassName: storage-nfs
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: tlidimad0001 # deephealth1
+    path: "/deephealth"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dh-pv-claim
+spec:
+  storageClassName: storage-nfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      id: dh-nfs-pv
