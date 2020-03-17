@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: tlidimad0001 # deephealth1
+    server: deephealth1
     path: "/deephealth"
 ---
 kind: PersistentVolumeClaim
