@@ -108,7 +108,7 @@ Initially we deployed the StorageClass and the PV/PVC:
 ```bash
 $ kubectl apply -f 01-dh-pv.yaml 
 
-$ kubectl get sc && echo && kubectl get pv && echo && kubectl get pvc 
+$ kubectl get pv && echo && kubectl get pvc 
 ```
 
 Then we run the training POD:
