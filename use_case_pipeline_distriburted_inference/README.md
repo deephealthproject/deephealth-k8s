@@ -27,3 +27,6 @@ The engine load YAML file (as in [1]) and to divide in n-parts with the same str
 An example of how this works would be if we had 2750 images. If we wanted to divide it into 5 parts, we would have 5 sub-YAMLs with 550 images each. In the case of dividing it into 4 parts, we had 687.5 images. Since this number is not integer, more images will be assigned to the last partition, that is, we would have three partitions with 687 images and the last one with 689 images.
 
 The image of this engine can be found in DeepHealth's Docker HUB repository.
+
+## Configure a JOBs to use a PV for NFS Storage
+
