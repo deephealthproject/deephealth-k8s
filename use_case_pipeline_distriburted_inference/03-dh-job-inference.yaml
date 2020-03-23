@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dh-job-inference-$PART
+spec:
+  ttlSecondsAfterFinished: 0 #to be automatically deleted, 0 seconds after it finishes.
+  completions: 1
+  template:
+    metadata:
+      name: dh-pod-inference
+    spec:    
+      volumes:
+        - name: dh-volume
+          persistentVolumeClaim:
+            claimName: dh-pv-claim
+      containers:
+      - name: dhealth-pylibs
+        image: dhealth/pylibs:latest
+        volumeMounts:
+          - name: dh-volume
+            mountPath: /deephealth
+        command: ["/bin/bash", "-c", "export OUTPUT_DIR=/deephealth/outputs; mkdir $OUTPUT_DIR/trash; python3 /deephealth/examples/use_case_pipeline/skin_lesion_segmentation_inference.py /deephealth/dataset/isic_segmentation/$FILENAME /deephealth/examples/use_case_pipeline/isic_segm_checkpoint.bin --out-dir $OUTPUT_DIR/$PART --batch-size 2"]
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      restartPolicy: Never
