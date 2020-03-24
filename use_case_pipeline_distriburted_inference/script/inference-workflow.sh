@@ -38,11 +38,13 @@ originalfilename=${pinput##*/}
 prefix='part'
 for i in $(seq -f "%03g" 0 $partsubtractone)
 do 
-   name=(part-$i-originalfilename)
+   name=(part-$i-$originalfilename)
    cat 03-dh-job-inference.yaml | sed "s/\$PART/${part-$i}/" | sed "s/\$FILENAME/${name}/" | sed "s/\$NUMBER/${parnumber}/" | kubectl apply -f - | printf "" 
 done
 echo "Done!"
 
+echo ""
+echo "Worflows running!"
 echo ""
 echo "Use [kubectl get job -n dh] to check the status of the jobs."
 echo "Use [kubectl get pod -n dh] to check the status of the  for each pod by job."
