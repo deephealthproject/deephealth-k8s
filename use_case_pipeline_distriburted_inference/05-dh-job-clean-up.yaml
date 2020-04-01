@@ -14,14 +14,14 @@ spec:
           persistentVolumeClaim:
             claimName: dh-pv-claim
       containers:
-      - name: dhealth-pylibs
-        image: dhealth/pylibs:latest
+      - name: command-cleanup-container
+        image: debian
         volumeMounts:
           - name: dh-volume
             mountPath: /deephealth
         command: ["/bin/bash", "-c", "rm -f $PODOUTPUT/part-*"]
         resources:
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "128Mi"
+            cpu: "125m"
       restartPolicy: Never

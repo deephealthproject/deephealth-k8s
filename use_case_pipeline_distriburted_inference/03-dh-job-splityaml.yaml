@@ -25,6 +25,6 @@ spec:
         - '$PODOUTPUT'
         resources:
           limits:
-            memory: "1024Mi"
-            cpu: "2000m"
+            memory: "128Mi"
+            cpu: "125m"
       restartPolicy: Never
