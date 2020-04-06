@@ -15,7 +15,7 @@ spec:
             claimName: dh-pv-claim
       containers:
       - name: split-yaml
-        image: davidgonzaleztreelogic/split-yaml:0.3.5
+        image: dhealth/split-yaml:1.0.0
         volumeMounts:
           - name: dh-volume
             mountPath: /deephealth

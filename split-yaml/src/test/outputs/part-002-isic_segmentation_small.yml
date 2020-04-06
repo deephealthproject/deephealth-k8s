@@ -1,0 +1,13 @@
+name: ISIC-part-2
+description: ISIC segmentation dataset
+images:
+- location: images_segmentation/ISIC_0014754.jpg
+  label: ground_truth/ISIC_0014754_segmentation.png
+- location: images_segmentation/ISIC_0013499.jpg
+  label: ground_truth/ISIC_0013499_segmentation.png
+split:
+  training:
+  - 0
+  validation: []
+  test:
+  - 1
