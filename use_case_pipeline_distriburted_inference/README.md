@@ -30,3 +30,44 @@ The image of this engine can be found in DeepHealth's Docker HUB repository.
 
 ## Configure a JOBs to use a PV for NFS Storage
 
+Four YAML files have been constructed for the execution of this example:
+
+- **01-dh-pv-nfs.yaml**: Persistent Volume and Persistent Volume Claim related to NFS storage.
+- **02-dh-pod-training.yaml**: Pod that runs the model training
+- **03-dh-job-splityaml.yaml**: Pod associated with the execution of the engine that will perform the dataset split (sub-YAMLs).
+- **04-dh-job-inference.yaml**: From the sub-YAMLs, a Job will be launched which will run the inference example.
+- **05-dh-job-clean-up.yaml**: Clean all sub-YAMLs file from NFS storage.
+
+On the other hand, we have two scripts associated only with the inference process:
+
+- **script/inference-workflow.config**: configuration required for the split dataset.
+- **script/inference-workflow.sh**: From a model, a workflow was built where each sub-YAML will be executed in different Pods, and if necessary, in different machines. 
+- **script/inference-clean-up.sh**: Cleaning up of what was executed with the worflow script.
+
+First, it build the PV and PVC:
+
+```bash
+$ kubectl apply -f 01-dh-pv-nfs.yaml 
+
+$ kubectl get pv && echo && kubectl get pvc 
+```
+
+and then, the PODs associated with model training. In case you already have a model, skip this step.
+
+```bash
+$ kubectl apply -f 02-dh-pod-training.yaml
+
+$ kubectl get pod dh-pod-training 
+```
+
+When the POD of the training is completed, we deploy the inference. To do this, you use the worflow script.
+
+```bash
+$ cd script
+$ ./inference-workflow.sh
+```
+Once everything is finished, to erase what was built with the worflow script, we launch the other script:
+
+```bash
+$ ./inference-clean-up.sh
+```
