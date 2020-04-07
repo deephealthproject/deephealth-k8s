@@ -10,7 +10,7 @@ We tested the use case from ECVL libraries in the DeepHealth's Kubernetes cluste
 
 - Dataset used: it's used [ISIC/Segmentation dataset](https://github.com/deephealthproject/use_case_pipeline/blob/master/README.md) [1]
 
-- [Skin lesion classification training example](https://github.com/deephealthproject/pyecvl/blob/master/examples/use_case_pipeline/skin_lesion_classification_training.py)
+- [Skin lesion segmentation training example](https://github.com/deephealthproject/pyecvl/blob/master/examples/use_case_pipeline/skin_lesion_segmentation_training.py)
 
 - [Skin lesion segmentation inference example](https://github.com/deephealthproject/pyecvl/blob/master/examples/use_case_pipeline/skin_lesion_segmentation_inference.py)
 
