@@ -11,7 +11,7 @@ import scala.util.Try
 
 object mainSplitYaml {
 
-  import customYaml._
+  import treeCustomYaml._
 
   implicit val LOG: Logger = LoggerFactory.getLogger(this.getClass) /**/
 

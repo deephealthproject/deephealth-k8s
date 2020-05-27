@@ -9,10 +9,10 @@ class TestDataSet extends FlatSpec {
 
   type TupleDS = ((Seq[ImagePath], Split), Int)
 
-  import customYaml._
+  import treeCustomYaml._
 
   val datasetEmpty: DataSet = DataSet.apply(
-    "empty", "", Seq(ImagePath("", "")), Split(Seq(-1), Seq(-1), Seq(-1))
+    "empty", "", Seq(ImagePath("", "", null)), Split(Seq(-1), Seq(-1), Seq(-1))
   )
 
   "DeepHealth Project: Split DataSet Format" should "Load Dataset from YAML file" in {
