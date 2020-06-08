@@ -1,16 +1,17 @@
 package eu.deephealthproject.processes
 
-case class ImagePath(location: String, label: String = "", values: String = "")
+case class ImagePath(location: String,
+                     label: String = "", values: String = "") // optional values
 
 case class Split(training: Seq[Int], validation: Seq[Int], test: Seq[Int])
 
-case class DataSet(name: String, description: String, //classes: String, features: String,
+case class DataSet(name: String, description: String, classes: String, features: String, // optional values
                    images: Seq[ImagePath], split: Split) {
 
   type TupleDS = ((Seq[ImagePath], Split), Int)
 
-  def apply(name: String, description: String, images: Seq[ImagePath], split: Split): DataSet =
-    DataSet(name, description, images, split)
+  def apply(name: String, description: String, classes: String, features: String, images: Seq[ImagePath], split: Split): DataSet =
+    DataSet(name, description, classes, features, images, split)
 
   override def toString: String = s"name: $name," +
     s"\ndescription: $description,\nfirst images: {\n\t${images.head.location},\n\t${images.head.label}\n}\nsplit:{" +

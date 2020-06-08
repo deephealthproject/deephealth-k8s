@@ -39,9 +39,15 @@ object mainSplitYaml {
       val splitds: Seq[((Seq[ImagePath], Split), Int)] = dataset.splitDataSet(splitNumber)
 
       val splitdsToDataSet: Seq[YamlValue] = splitds.map { elem =>
+        val datasetName = dataset.name match {
+          case name if name != null => s"${dataset.name}-"
+          case _ => ""
+        }
         DataSet.apply(
-          s"${dataset.name}-part-${elem._2}",
+          s"{$datasetName}part-${elem._2}",
           dataset.description,
+          dataset.classes,
+          dataset.features,
           elem._1._1,
           elem._1._2
         ).toYaml

@@ -12,7 +12,7 @@ class TestDataSet extends FlatSpec {
   import treeCustomYaml._
 
   val datasetEmpty: DataSet = DataSet.apply(
-    "empty", "", Seq(ImagePath("", "", null)), Split(Seq(-1), Seq(-1), Seq(-1))
+    "empty", "", "", "", Seq(ImagePath("", "", null)), Split(Seq(-1), Seq(-1), Seq(-1))
   )
 
   "DeepHealth Project: Split DataSet Format" should "Load Dataset from YAML file" in {
@@ -58,6 +58,8 @@ class TestDataSet extends FlatSpec {
         DataSet.apply(
           s"${datasetResult.name}-part-${elem._2}",
           datasetResult.description,
+          datasetResult.classes,
+          datasetResult.features,
           elem._1._1,
           elem._1._2
         )
