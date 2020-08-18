@@ -1,23 +1,23 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: dh-job-splityaml
+  name: dhealth-job-splityaml
 spec:
   completions: 1
   ttlSecondsAfterFinished: 0 #to be automatically deleted, 0 seconds after it finishes.
   template:
     metadata:
-      name: dh-pod-splityaml-$PARTNUMBER
+      name: dhealth-pod-splityaml-$PARTNUMBER
     spec:
       volumes:
-        - name: dh-volume
+        - name: dhealth-volume
           persistentVolumeClaim:
-            claimName: dh-pv-claim
+            claimName: dhealth-pvc
       containers:
       - name: split-yaml
         image: dhealth/split-yaml:latest
         volumeMounts:
-          - name: dh-volume
+          - name: dhealth-volume
             mountPath: /deephealth
         args:
         - '$PODINPUT'
@@ -25,6 +25,6 @@ spec:
         - '$PODOUTPUT'
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "125m"
+            memory: "512Mi"
+            cpu: "1000m"
       restartPolicy: Never

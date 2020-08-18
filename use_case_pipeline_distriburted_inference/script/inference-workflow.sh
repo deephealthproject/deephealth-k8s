@@ -26,7 +26,7 @@ COND="Not Complete"
 echo ""
 echo "Creating $partnumber partitions from $pinput" 
 while [ "$COND" != "Complete" ]; do
-   COND=$(kubectl get job dh-job-splityaml -o jsonpath='{.status.conditions[*].type}')
+   COND=$(kubectl get job dhealth-job-splityaml -o jsonpath='{.status.conditions[*].type}')
    printf "."
 done
 echo "Done!"

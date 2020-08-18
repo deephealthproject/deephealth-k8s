@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: dh-pv
+  name: dhealth-pv
   labels:
     id: dh-nfs-pv
 spec:
@@ -17,7 +17,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: dh-pv-claim
+  name: dhealth-pvc
 spec:
   storageClassName: storage-nfs
   accessModes:

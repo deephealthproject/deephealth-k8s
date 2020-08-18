@@ -1,27 +1,27 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: dh-job-clean-up
+  name: dhealth-job-clean-up
 spec:
   completions: 1
   ttlSecondsAfterFinished: 0 #to be automatically deleted, 0 seconds after it finishes.
   template:
     metadata:
-      name: dh-clean-up
+      name: dhealth-clean-up
     spec:    
       volumes:
-        - name: dh-volume
+        - name: dhealth-volume
           persistentVolumeClaim:
-            claimName: dh-pv-claim
+            claimName: dhealth-pvc
       containers:
       - name: command-cleanup-container
-        image: debian
+        image: ubuntu
         volumeMounts:
-          - name: dh-volume
+          - name: dhealth-volume
             mountPath: /deephealth
         command: ["/bin/bash", "-c", "rm -f $PODOUTPUT/part-*"]
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "125m"
+            memory: "512Mi"
+            cpu: "1000m"
       restartPolicy: Never

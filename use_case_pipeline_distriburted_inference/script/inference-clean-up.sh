@@ -35,9 +35,9 @@ echo ""
 
 # remove partition files
 cat 05-dh-job-clean-up.yaml | sed "s|\$PODOUTPUT|${poutput}|g" | kubectl apply -f -
-echo "Creating $partnumber partitions from $pinput" 
+echo "Deleting $partnumber partitions from $pinput" 
 while [ "$COND" != "Complete" ]; do
-   COND=$(kubectl get jobs dh-job-clean-up -o jsonpath='{.status.conditions[*].type}')
+   COND=$(kubectl get jobs dhealth-job-clean-up -o jsonpath='{.status.conditions[*].type}')
    printf "."
 done
 echo "Done!"
