@@ -49,8 +49,8 @@ As seen here, the base of the container is dhealth/pylibs:latest. Tini is instal
 
 Once the image is adapted, it is loaded into the Notebook creation using the Custom image option.
 
-![Kubeflow Notebook 01](images/kubeflow-notebook "Kubeflow Notebook: Custom Imagen")
+![Kubeflow Notebook 01](images/kubeflow-notebook.png "Kubeflow Notebook: Custom Imagen")
 
 Once created, you can see how it is possible to use the libraries on the notebook:
 
-![Kubeflow Notebook 02](images/kubeflow-notebook-02 "Kubeflow Notebook")
+![Kubeflow Notebook 02](images/kubeflow-notebook-02.png "Kubeflow Notebook")
